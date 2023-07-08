@@ -3,19 +3,15 @@ from typing import List
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        first_ptr = 0
-        second_ptr = 1
-        sum = 0
-        while sum != target or first_ptr < len(nums) - 1:
-            sum = nums[first_ptr] + nums[second_ptr]
-            if sum == target:
-                return [first_ptr, second_ptr]
-            if second_ptr == len(nums) - 1:
-                first_ptr += 1
-                second_ptr = first_ptr + 1
-            else:
-                second_ptr += 1
+        collect = {}
+
+        for index, num in enumerate(nums):
+            if num in collect:
+                return [index, collect[num]]
+            diff = target - num
+            if diff not in collect:
+                collect[diff] = index
 
 
 s = Solution()
-print(s.twoSum([3,2,4], 6))
+print(s.twoSum([2,7,11,15], 9))
