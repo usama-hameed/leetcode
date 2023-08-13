@@ -1,0 +1,14 @@
+from typing import List
+
+
+class Solution:
+    def buildArray(self, nums: List[int]) -> List[int]:
+        arr = []
+        for i in range(len(nums)):
+            arr.append(nums[nums[i]])
+
+        return arr
+
+
+s = Solution()
+s.buildArray([5,0,1,2,3,4])
