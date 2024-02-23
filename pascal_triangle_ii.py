@@ -2,15 +2,18 @@ from typing import List
 
 
 class Solution:
-    def generate(self, numRows: int) -> List[List[int]]:
+    def getRow(self, rowIndex: int) -> List[int]:
+
+        if rowIndex == 0:
+            return [1]
+
         final = [[1], [1, 1]]
-        if numRows < 3:
-            return final[numRows:]
+
 
         count = 2
         inner_list = [1]
         index = 1
-        while count < numRows:
+        while count < rowIndex+1:
             if index < len(final[-1]):
                 inner_list.append(final[-1][index] + final[-1][index-1])
                 index += 1
@@ -21,8 +24,7 @@ class Solution:
                 inner_list = [1]
                 index = 1
 
-        return final
-
+        return final[-1]
 
 s = Solution()
-print(s.generate(5))
+print(s.getRow(2))
